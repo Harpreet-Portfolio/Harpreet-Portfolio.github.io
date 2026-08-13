@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting UAT Sign-Off Without the Last-Minute Scramble — Harpreet Singh</title>
+<style>
+  :root{
+    --navy-deep:#0B2545; --navy-mid:#123A6B; --sky:#1B98E0; --gold:#E8B24D;
+    --paper:#F5F7FA; --white:#FFFFFF; --ink:#1A1F2B; --ink-soft:#5B6472; --line:#E1E6ED;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Sora','Inter',sans-serif;font-weight:700;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  .article-wrap{max-width:740px;margin:0 auto;padding:0 32px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(11,37,69,0.96);backdrop-filter:blur(6px);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:var(--max);margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--white);font-size:18px;font-weight:700;}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 4px rgba(27,152,224,0.25);}
+  nav.links{display:flex;gap:32px;}
+  nav.links a{color:rgba(255,255,255,0.78);font-size:14px;font-weight:600;letter-spacing:0.02em;transition:color 0.2s;}
+  nav.links a:hover{color:var(--white);}
+  .nav-cta{background:var(--sky);color:var(--navy-deep);padding:9px 18px;border-radius:6px;font-size:14px;font-weight:700;}
+
+  .post-hero{background:linear-gradient(135deg,var(--navy-deep),var(--navy-mid));color:var(--white);padding:64px 0 56px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:rgba(255,255,255,0.65);margin-bottom:24px;}
+  .back-link:hover{color:var(--white);}
+  .category-tag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(232,178,77,0.4);padding:6px 12px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+  .post-hero h1{font-size:38px;line-height:1.2;margin-bottom:16px;max-width:680px;}
+  .post-meta{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,0.6);}
+
+  article{padding:56px 0 40px;}
+  article p{font-size:16px;line-height:1.75;color:var(--ink);margin:0 0 20px;}
+  article h2{font-size:24px;color:var(--navy-deep);margin:44px 0 16px;}
+  article h3{font-size:19px;color:var(--navy-deep);margin:36px 0 14px;}
+  article ul, article ol{margin:0 0 20px;padding-left:22px;}
+  article li{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:8px;}
+  article strong{color:var(--ink);}
+  .lede{font-size:18px;line-height:1.7;color:var(--ink-soft);margin-bottom:8px;}
+  .callout{background:var(--paper);border-left:3px solid var(--sky);padding:18px 22px;border-radius:6px;margin:28px 0;font-size:15.5px;color:var(--ink);line-height:1.65;}
+  .callout strong{color:var(--navy-deep);}
+  table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;}
+  th{background:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--navy-mid);}
+  td{color:var(--ink-soft);}
+  hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+
+  .post-footer{background:var(--paper);padding:56px 0;}
+  .footer-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:36px;text-align:center;}
+  .footer-card h3{font-size:20px;color:var(--navy-deep);margin-bottom:10px;}
+  .footer-card p{color:var(--ink-soft);font-size:14.5px;margin-bottom:22px;}
+  .btn{display:inline-block;padding:12px 24px;border-radius:6px;font-size:14px;font-weight:700;background:var(--sky);color:var(--navy-deep);}
+
+  footer.site-footer{background:var(--navy-deep);color:rgba(255,255,255,0.6);padding:32px 0;font-size:13.5px;text-align:center;}
+
+  @media (max-width:700px){
+    nav.links{display:none;}
+    .post-hero h1{font-size:28px;}
+    article{padding:40px 0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="dot"></span> Harpreet Singh</a>
+    <nav class="links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#certifications">Certifications</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#contact" class="nav-cta">Work with me</a>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="article-wrap">
+    <a href="index.html#blog" class="back-link">← Back to blog</a>
+    <span class="category-tag">UAT</span>
+    <h1>Getting UAT Sign-Off Without the Last-Minute Scramble</h1>
+    <div class="post-meta">Harpreet Singh · Salesforce QA Analyst</div>
+  </div>
+</div>
+
+<article class="article-wrap">
+  <p class="lede">User Acceptance Testing (UAT) is often treated as the final checkpoint before a release. But in many projects, UAT becomes stressful for one simple reason: everything is left until the last minute.</p>
+  <p>Test cases are shared late, business users don't know what to validate, defects are discovered days before release, and stakeholders are asked for sign-off when they barely have enough time to review the functionality. A successful UAT process should not feel like a race against the release deadline.</p>
+  <div class="callout">The goal is simple: make UAT a planned business validation process instead of a last-minute testing activity.</div>
+
+  <h2>1. Start UAT Planning Early</h2>
+  <p>UAT should not begin when development is completed. Start planning as soon as the requirements are stable. Before development is finished, identify:</p>
+  <ul>
+    <li>What functionality needs UAT?</li>
+    <li>Who will perform UAT?</li>
+    <li>Which business processes are impacted?</li>
+    <li>What test data is required?</li>
+    <li>What environment will be used?</li>
+    <li>What are the acceptance criteria?</li>
+    <li>What is the planned UAT window?</li>
+    <li>What is the sign-off deadline?</li>
+  </ul>
+  <p>Early planning gives everyone visibility and reduces surprises later.</p>
+
+  <h2>2. Define Clear Acceptance Criteria</h2>
+  <p>One of the biggest reasons for UAT delays is unclear expectations. Business users should know exactly what they are expected to validate. Instead of saying "please test the new SMS functionality," define specific acceptance criteria:</p>
+  <ul>
+    <li>User can send an SMS successfully</li>
+    <li>Incoming SMS is received correctly</li>
+    <li>Message history is displayed</li>
+    <li>Opt-out rules are applied</li>
+    <li>Unauthorized users cannot send messages</li>
+    <li>Error messages are displayed correctly</li>
+    <li>Functionality works for supported user profiles</li>
+  </ul>
+  <p>Clear acceptance criteria make UAT measurable.</p>
+
+  <h2>3. Prepare the UAT Environment Before Testing Starts</h2>
+  <p>Never wait for the UAT start date to prepare the environment. Validate beforehand that the Salesforce org is available, required packages and correct versions are deployed, required users exist, profiles and permission sets are configured, test data is available, integrations are working, external services are accessible, and mobile builds are available if required.</p>
+  <div class="callout">A UAT session should begin with "everything is ready, please start testing" — not "we are still configuring the environment."</div>
+
+  <h2>4. Give Business Users a Simple UAT Guide</h2>
+  <p>Business users should not have to understand the technical implementation to perform UAT. Provide a simple document that explains what is being tested, what should be validated, what should be expected in business language, and how defects should be reported. For example:</p>
+  <div class="callout"><strong>Scenario:</strong> Send a message to a customer who has opted out.<br><strong>Expected Result:</strong> The system should prevent the message from being sent and display the appropriate compliance message.</div>
+  <p>This makes UAT much easier for non-technical users.</p>
+
+  <h2>5. Use Realistic Business Scenarios</h2>
+  <p>UAT should represent how users actually work. Don't rely only on technical test cases like "verify that the Send button works." Instead, test something like: "as a sales representative, send a follow-up message to an existing customer after an outbound call and verify that the conversation is recorded correctly." The second scenario validates the actual business process — this is where UAT provides value that traditional QA testing cannot completely replace.</p>
+
+  <h2>6. Separate QA Testing From UAT</h2>
+  <p>QA and UAT have different objectives. QA asks: does the system work according to the requirements? UAT asks: does the system support the business process correctly? QA should ideally identify functional defects before the application reaches UAT — UAT should not become a second round of basic QA. If UAT users are discovering obvious issues such as broken buttons, missing fields, incorrect permissions, or basic validation failures, the release is entering UAT too early.</p>
+
+  <h2>7. Define Entry Criteria</h2>
+  <p>Before UAT begins, establish clear entry criteria — for example: development is complete, QA testing is completed, critical defects are closed, required regression testing is completed, the UAT environment is ready, test data is available, UAT users have access, release notes are available, and known limitations are documented. If these conditions are not met, UAT should not officially start. This prevents the UAT team from becoming the first line of defect detection.</p>
+
+  <h2>8. Define Exit Criteria</h2>
+  <p>Just as important as entry criteria are the exit criteria — what must be true before UAT can be signed off. For example: all critical scenarios passed, no open blocker or critical defects, high-priority defects have an agreed resolution, business users have completed required scenarios, known limitations are documented, and the business owner approves the release. This removes ambiguity around the question "are we ready to release?"</p>
+
+  <h2>9. Track UAT Progress Daily</h2>
+  <p>Don't wait until the final UAT day to find out that only 30% of testing has been completed. Track progress throughout the UAT window. A simple dashboard can show:</p>
+  <table>
+    <tr><th>Metric</th><th>Status</th></tr>
+    <tr><td>Total Scenarios</td><td>50</td></tr>
+    <tr><td>Passed</td><td>42</td></tr>
+    <tr><td>Failed</td><td>3</td></tr>
+    <tr><td>Blocked</td><td>2</td></tr>
+    <tr><td>Not Tested</td><td>3</td></tr>
+    <tr><td>Completion</td><td>90%</td></tr>
+  </table>
+  <p>This immediately highlights risks. If UAT completion is falling behind, the team can take action early.</p>
+
+  <h2>10. Establish a Clear Defect Process</h2>
+  <p>UAT defects should have a defined workflow:</p>
+  <div class="callout">UAT User → Defect Logged → QA Validation → Development Analysis → Fix → QA Retest → UAT Validation → Closed</div>
+  <p>Every defect should include the scenario, steps to reproduce, expected result, actual result, environment, user, screenshots or videos, severity, and business impact. This prevents unnecessary back-and-forth between teams.</p>
+
+  <h2>11. Prioritize Defects by Business Impact</h2>
+  <p>Not every UAT issue should stop the release. Classify defects based on business impact:</p>
+  <ul>
+    <li><strong>Blocker</strong> — business process cannot continue</li>
+    <li><strong>Critical</strong> — major business functionality is unavailable</li>
+    <li><strong>High</strong> — important functionality is affected, but a workaround may exist</li>
+    <li><strong>Medium</strong> — limited business impact</li>
+    <li><strong>Low</strong> — minor UI or usability issue</li>
+  </ul>
+  <p>This helps stakeholders make informed release decisions instead of treating every defect equally.</p>
+
+  <h2>12. Communicate Risks Early</h2>
+  <p>One of the worst UAT practices is hiding problems until the sign-off meeting. If there is a risk, communicate it immediately:</p>
+  <div class="callout">"UAT is currently 70% complete. Three high-priority scenarios are blocked due to an integration issue. The team is working on the fix, and the current sign-off timeline may be impacted."</div>
+  <p>This is much better than saying one day before release: "we may not be able to complete UAT." Early communication gives stakeholders time to make decisions.</p>
+
+  <h2>13. Avoid Changing Requirements During UAT</h2>
+  <p>UAT should validate agreed requirements. If stakeholders introduce new requirements during UAT, the team should evaluate them separately — a new requirement can affect development effort, test coverage, regression testing, UAT timelines, and release dates. Not every new request should automatically become a release blocker. Ask: is this a defect against the agreed requirement, or is it a new requirement? That distinction can save significant time.</p>
+
+  <h2>14. Maintain a Known Issues List</h2>
+  <p>Sometimes a release can proceed with known limitations. Instead of hiding these issues, document them clearly:</p>
+  <table>
+    <tr><th>Issue</th><th>Impact</th><th>Workaround</th><th>Owner</th><th>Planned Fix</th></tr>
+    <tr><td>Feature X unavailable</td><td>Medium</td><td>Use Feature Y</td><td>Dev Team</td><td>Next Release</td></tr>
+    <tr><td>Report delay</td><td>Low</td><td>Refresh manually</td><td>Admin</td><td>Future Sprint</td></tr>
+  </table>
+  <p>This allows business stakeholders to provide informed approval.</p>
+
+  <h2>15. Don't Ask for Sign-Off at the Last Minute</h2>
+  <p>Sign-off should be a planned milestone. Instead of "please provide UAT sign-off today," communicate the timeline upfront — UAT start on Monday, midpoint review Wednesday, defect closure Thursday, final validation Friday morning, sign-off Friday afternoon, production release Monday. Stakeholders then understand their responsibility and timeline.</p>
+
+  <h2>16. Make Sign-Off Explicit</h2>
+  <p>A verbal "looks good" should not be considered formal sign-off. Capture the business owner, UAT completion status, approved scope, open known issues, business acceptance, date of approval, and the release/version being approved. For example:</p>
+  <div class="callout">UAT Status: Passed · Open Critical Defects: 0 · Open High Defects: 0 · Known Issues: 2 – documented and accepted · Business Owner: Approved · Sign-Off Date: [Date]</div>
+  <p>This provides a clear audit trail.</p>
+
+  <h2>17. Use a UAT Readiness Checklist</h2>
+  <p>A simple checklist can prevent many last-minute problems.</p>
+  <p><strong>Before UAT:</strong></p>
+  <ul>
+    <li>Requirements are finalized</li>
+    <li>Acceptance criteria are defined</li>
+    <li>UAT users are identified</li>
+    <li>UAT environment is ready</li>
+    <li>Test data is available</li>
+    <li>User access is verified</li>
+    <li>Integrations are working</li>
+    <li>QA testing is completed</li>
+    <li>Critical defects are closed</li>
+    <li>UAT scenarios are shared</li>
+  </ul>
+  <p><strong>During UAT:</strong></p>
+  <ul>
+    <li>Progress is tracked</li>
+    <li>Defects are logged correctly</li>
+    <li>Blockers are escalated immediately</li>
+    <li>Daily status is communicated</li>
+    <li>Business scenarios are being validated</li>
+    <li>Scope changes are controlled</li>
+  </ul>
+  <p><strong>Before Sign-Off:</strong></p>
+  <ul>
+    <li>Required scenarios are completed</li>
+    <li>Critical defects are closed</li>
+    <li>High-risk issues are reviewed</li>
+    <li>Known issues are documented</li>
+    <li>Business owner has reviewed results</li>
+    <li>Final approval is recorded</li>
+  </ul>
+
+  <h2>18. The Key to a Smooth UAT</h2>
+  <p>The biggest mistake is thinking UAT starts when QA finishes. A better mindset is: UAT preparation starts when the requirement is defined. When requirements, acceptance criteria, users, test data, environments, timelines, and ownership are prepared early, the final sign-off becomes much easier. UAT should not be a last-minute scramble between QA, development, project managers, and business users — it should be a controlled process with clear expectations.</p>
+
+  <hr>
+  <h2>Final Thoughts</h2>
+  <p>A successful UAT process is built on preparation, communication, and ownership. The objective is not simply to get someone's approval before the release deadline — it is to ensure that the business understands what is being released, what has been tested, what has passed, what issues remain, what risks exist, and what they are approving.</p>
+  <p>When everyone has this information before the final sign-off meeting, UAT becomes a predictable release milestone rather than a stressful last-minute activity. <strong>The best UAT sign-off is the one that feels like confirmation — not negotiation.</strong></p>
+</article>
+
+
+<div class="post-footer">
+  <div class="article-wrap">
+    <div class="footer-card">
+      <h3>Enjoyed this post?</h3>
+      <p>I write about Salesforce QA, testing patterns, and lessons from real implementations roughly every two weeks.</p>
+      <a href="index.html#blog" class="btn">Read more posts</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">© 2026 Harpreet Singh. Built with a little AI help.</footer>
+
+</body>
+</html>
