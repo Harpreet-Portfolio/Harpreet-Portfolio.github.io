@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Passed the Salesforce Administrator Exam — Harpreet Singh</title>
+<style>
+  :root{
+    --navy-deep:#0B2545; --navy-mid:#123A6B; --sky:#1B98E0; --gold:#E8B24D;
+    --paper:#F5F7FA; --white:#FFFFFF; --ink:#1A1F2B; --ink-soft:#5B6472; --line:#E1E6ED;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Sora','Inter',sans-serif;font-weight:700;margin:0;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  .article-wrap{max-width:740px;margin:0 auto;padding:0 32px;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(11,37,69,0.96);backdrop-filter:blur(6px);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:var(--max);margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--white);font-size:18px;font-weight:700;}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 4px rgba(27,152,224,0.25);}
+  nav.links{display:flex;gap:32px;}
+  nav.links a{color:rgba(255,255,255,0.78);font-size:14px;font-weight:600;letter-spacing:0.02em;transition:color 0.2s;}
+  nav.links a:hover{color:var(--white);}
+  .nav-cta{background:var(--sky);color:var(--navy-deep);padding:9px 18px;border-radius:6px;font-size:14px;font-weight:700;}
+
+  .post-hero{background:linear-gradient(135deg,var(--navy-deep),var(--navy-mid));color:var(--white);padding:64px 0 56px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;color:rgba(255,255,255,0.65);margin-bottom:24px;}
+  .back-link:hover{color:var(--white);}
+  .category-tag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(232,178,77,0.4);padding:6px 12px;border-radius:20px;display:inline-block;margin-bottom:20px;}
+  .post-hero h1{font-size:38px;line-height:1.2;margin-bottom:16px;max-width:680px;}
+  .post-meta{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,0.6);}
+
+  article{padding:56px 0 40px;}
+  article p{font-size:16px;line-height:1.75;color:var(--ink);margin:0 0 20px;}
+  article h2{font-size:24px;color:var(--navy-deep);margin:44px 0 16px;}
+  article h3{font-size:19px;color:var(--navy-deep);margin:36px 0 14px;}
+  article ul, article ol{margin:0 0 20px;padding-left:22px;}
+  article li{font-size:15.5px;line-height:1.7;color:var(--ink-soft);margin-bottom:8px;}
+  article strong{color:var(--ink);}
+  .lede{font-size:18px;line-height:1.7;color:var(--ink-soft);margin-bottom:8px;}
+  .callout{background:var(--paper);border-left:3px solid var(--sky);padding:18px 22px;border-radius:6px;margin:28px 0;font-size:15.5px;color:var(--ink);line-height:1.65;}
+  .callout strong{color:var(--navy-deep);}
+  table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;}
+  th{background:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--navy-mid);}
+  td{color:var(--ink-soft);}
+  hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+
+  .post-footer{background:var(--paper);padding:56px 0;}
+  .footer-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:36px;text-align:center;}
+  .footer-card h3{font-size:20px;color:var(--navy-deep);margin-bottom:10px;}
+  .footer-card p{color:var(--ink-soft);font-size:14.5px;margin-bottom:22px;}
+  .btn{display:inline-block;padding:12px 24px;border-radius:6px;font-size:14px;font-weight:700;background:var(--sky);color:var(--navy-deep);}
+
+  footer.site-footer{background:var(--navy-deep);color:rgba(255,255,255,0.6);padding:32px 0;font-size:13.5px;text-align:center;}
+
+  @media (max-width:700px){
+    nav.links{display:none;}
+    .post-hero h1{font-size:28px;}
+    article{padding:40px 0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="dot"></span> Harpreet Singh</a>
+    <nav class="links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#certifications">Certifications</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#contact" class="nav-cta">Work with me</a>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="article-wrap">
+    <a href="index.html#blog" class="back-link">← Back to blog</a>
+    <span class="category-tag">Career</span>
+    <h1>How I Passed the Salesforce Administrator Exam</h1>
+    <div class="post-meta">Harpreet Singh · Salesforce QA Analyst</div>
+  </div>
+</div>
+
+<article class="article-wrap">
+  <p class="lede">Passing the Salesforce Administrator exam is not just about memorizing Salesforce features. It requires a combination of conceptual understanding, hands-on practice, consistent revision, and the ability to think like a Salesforce Administrator.</p>
+  <p>When I started preparing, I initially thought that completing the study material and solving practice questions would be enough. I quickly realized the exam tests how well you understand Salesforce concepts and how you would apply them in real-world situations. Here is the approach that helped me prepare effectively.</p>
+
+  <h2>1. Understand What the Exam Actually Tests</h2>
+  <p>The first step was understanding the exam structure and the areas covered. Instead of studying randomly, I divided my preparation into the important topics:</p>
+  <ul>
+    <li>Organization Setup</li>
+    <li>User Setup</li>
+    <li>Security and Access</li>
+    <li>Standard and Custom Objects</li>
+    <li>Sales Applications</li>
+    <li>Service and Support</li>
+    <li>Data Management</li>
+    <li>Reports and Dashboards</li>
+    <li>Automation</li>
+    <li>AppExchange</li>
+    <li>Salesforce Mobile</li>
+    <li>Configuration and Customization</li>
+  </ul>
+  <p>This gave me a clear roadmap. Rather than asking "what should I study today?" I could ask "which exam topic am I covering today, and do I understand it well enough to apply it?"</p>
+
+  <h2>2. Build a Strong Salesforce Foundation</h2>
+  <p>One of the biggest lessons I learned was not to jump directly into practice questions — first, I focused on understanding the fundamentals. Salesforce security, for example, is much easier to understand once you know how these concepts work together:</p>
+  <div class="callout">Organization-Wide Defaults → Role Hierarchy → Sharing Rules → Manual Sharing → Profiles → Permission Sets → Field-Level Security</div>
+  <p>Similarly, understanding the difference between Profile, Permission Set, Permission Set Group, Role, Public Group, and Queue is far more valuable than simply memorizing definitions. The exam often presents a business scenario and asks which Salesforce feature should be used, so understanding when and why to use a feature is critical.</p>
+
+  <h2>3. Get Hands-On Experience</h2>
+  <p>Reading Salesforce documentation is useful, but hands-on practice made the biggest difference for me. I created configurations in a Salesforce environment and tested them myself. Instead of only reading about Profiles, I created different users and changed their permissions. Instead of memorizing sharing rules, I configured OWD, role hierarchy, sharing rules, and manual sharing, then logged in as different users to see what each one could access.</p>
+  <div class="callout">My rule was simple: if I can configure it and explain it, I probably understand it.</div>
+
+  <h2>4. Focus on the "Why"</h2>
+  <p>One of the most important changes in my preparation was moving away from memorization. Instead of memorizing "use a Permission Set to provide additional permissions," I asked: why would I use a Permission Set instead of creating another Profile? That distinction becomes important when answering scenario-based questions.</p>
+  <p>The same applies to automation. Don't just memorize the names of Salesforce automation tools — understand when Flow should be used, what a Record-Triggered Flow can do, when a Scheduled Flow would be appropriate, what happens before and after a record is saved, and what limitations an administrator should consider. The more clearly you understand the reasoning, the easier scenario-based questions become.</p>
+
+  <h2>5. Pay Special Attention to Security</h2>
+  <p>Salesforce security is one of the areas where strong conceptual understanding is extremely important. I spent additional time understanding:</p>
+  <ul>
+    <li><strong>Object-Level Security</strong> — can the user access the object?</li>
+    <li><strong>Field-Level Security</strong> — can the user see or edit a particular field?</li>
+    <li><strong>Record-Level Security</strong> — can the user access a particular record?</li>
+  </ul>
+  <p>I also practiced different combinations of Profiles, Permission Sets, Roles, OWD, Sharing Rules, Queues, Public Groups, and Manual Sharing. This helped me understand how Salesforce determines access. A useful question to ask: what is the most restrictive layer affecting this user's access?</p>
+
+  <h2>6. Practice Reports and Dashboards</h2>
+  <p>Reports and dashboards are another area where hands-on practice is valuable. I practiced creating different report types and learned how filters affect the final result, focusing on tabular, summary, matrix, and joined reports, report filters, filter logic, cross filters, summary fields, dashboard components, and running users. Instead of memorizing definitions, I created reports and observed the results — that made the concepts much easier to remember.</p>
+
+  <h2>7. Learn Data Management</h2>
+  <p>I also spent time understanding how Salesforce handles data — Import Wizard, Data Loader, Data Export, Duplicate Management, Validation Rules, Mass Transfer, Mass Delete, Data Import, and record ownership. One important lesson was understanding which tool should be used for a particular requirement — the correct answer often depends on factors such as data volume, object type, operation, and whether automation needs to be triggered.</p>
+
+  <h2>8. Use Practice Questions Strategically</h2>
+  <p>Practice questions were an important part of my preparation, but I didn't use them simply to memorize answers. Whenever I got a question wrong, I asked: why was my answer wrong, why is the correct answer right, why are the other options wrong, what Salesforce concept is being tested, and can I reproduce this scenario in my Salesforce environment?</p>
+  <p>This approach was much more effective than repeatedly solving the same questions. A practice question should teach you something — even when you answer it incorrectly.</p>
+
+  <h2>9. Create Short Revision Notes</h2>
+  <p>As I studied, I created short notes for concepts that were difficult to remember. For example:</p>
+  <div class="callout">
+    <strong>Security</strong> — Profile → baseline permissions · Permission Set → additional permissions · Role → record visibility · OWD → baseline record access · Sharing Rule → additional record access<br><br>
+    <strong>Automation</strong> — understand the use case · understand when the automation executes · understand what records it can affect · understand possible limitations
+  </div>
+  <p>These quick notes became extremely useful during final revision.</p>
+
+  <h2>10. Don't Ignore Scenario-Based Questions</h2>
+  <p>The exam is not simply a collection of definitions — you need to be comfortable reading a business scenario and identifying the best Salesforce solution. For example: a company wants to give five users additional access to a particular object without creating a new profile. Instead of thinking "what is a Permission Set?", think: "the users already have their baseline permissions, but they need additional access — what Salesforce feature provides additional permissions without changing their profile?" That reasoning naturally leads to the correct solution.</p>
+
+  <h2>11. Review Every Topic Multiple Times</h2>
+  <p>I found that studying a topic once was not enough. My preparation followed a cycle:</p>
+  <div class="callout">Learn → Configure → Practice → Review → Repeat</div>
+  <p>For example: Day 1, learn sharing rules. Day 2, configure sharing rules. Day 3, solve scenario-based questions. Day 7, review the concept again. This repetition helped move information from short-term memory into long-term understanding.</p>
+
+  <h2>12. Don't Try to Memorize Everything</h2>
+  <p>Salesforce is huge — you cannot realistically memorize every feature, setting, limitation, and configuration. Instead, focus on understanding the core concepts and relationships between them. If you understand how Salesforce security works, you can solve many questions even when the scenario is presented differently. That is much more valuable than memorizing hundreds of individual answers.</p>
+
+  <h2>13. Use the Final Days for Revision</h2>
+  <p>During the final stage of preparation, I focused less on learning completely new topics and more on identifying weak areas — reviewing security, reports, data management, automation, user management, configuration, scenario-based questions, and topics where I repeatedly made mistakes. I also avoided spending too much time on questions I already understood. The goal was to improve weak areas, not simply increase the number of questions completed.</p>
+
+  <h2>14. Read the Question Carefully</h2>
+  <p>This sounds simple, but it is extremely important. Salesforce questions often contain details that determine the correct answer. Pay attention to words such as best, most appropriate, minimum effort, without customization, without changing the profile, automatically, multiple users, specific records, all users, and immediately — these words can completely change the answer. Before looking at the options, I tried to identify exactly what the business requirement was, then evaluated the available Salesforce solutions.</p>
+
+  <h2>15. Think Like an Administrator</h2>
+  <p>One of the biggest mindset changes in my preparation was learning to think like a Salesforce Administrator. When faced with a requirement, ask: can this be solved using standard Salesforce functionality? Then consider the order: Configuration → Automation → Customization → Development. A good administrator should generally prefer the simplest standard solution when it satisfies the requirement — if a requirement can be solved through configuration, there may be no reason to introduce custom development.</p>
+
+  <hr>
+  <h2>My Final Preparation Strategy</h2>
+  <p>My overall preparation can be summarized as:</p>
+  <ol>
+    <li>Understand the exam topics</li>
+    <li>Learn Salesforce fundamentals</li>
+    <li>Practice configuration hands-on</li>
+    <li>Focus heavily on security</li>
+    <li>Solve scenario-based questions</li>
+    <li>Analyze every incorrect answer</li>
+    <li>Create short revision notes</li>
+    <li>Revisit weak areas</li>
+    <li>Take practice exams</li>
+    <li>Go into the exam with a clear understanding of the concepts</li>
+  </ol>
+
+  <h2>Final Thoughts</h2>
+  <p>Passing the Salesforce Administrator exam is achievable, but preparation should go beyond memorizing answers. The most important lesson I learned was: don't study Salesforce only to pass the exam — study it to understand how Salesforce solves business problems.</p>
+  <p>When you understand the platform, practice configurations yourself, analyze scenario-based questions, and continuously review your weak areas, the exam becomes much more manageable. And the knowledge doesn't stop being useful after the exam. The real benefit of the certification is having the confidence to look at a Salesforce requirement and think: <strong>"I understand the problem, I know which Salesforce feature can solve it, and I know why."</strong> That is what makes the certification valuable — not just the certificate itself.</p>
+</article>
+
+
+<div class="post-footer">
+  <div class="article-wrap">
+    <div class="footer-card">
+      <h3>Enjoyed this post?</h3>
+      <p>I write about Salesforce QA, testing patterns, and lessons from real implementations roughly every two weeks.</p>
+      <a href="index.html#blog" class="btn">Read more posts</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">© 2026 Harpreet Singh. Built with a little AI help.</footer>
+
+</body>
+</html>
