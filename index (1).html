@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harpreet Singh — Salesforce QA Analyst</title>
+<style>
+  :root{
+    --navy-deep:#0B2545;
+    --navy-mid:#123A6B;
+    --sky:#1B98E0;
+    --gold:#E8B24D;
+    --paper:#F5F7FA;
+    --white:#FFFFFF;
+    --ink:#1A1F2B;
+    --ink-soft:#5B6472;
+    --line:#E1E6ED;
+    --radius:10px;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Sora','Inter',sans-serif;
+    font-weight:700;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono','Courier New',monospace;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  img{max-width:100%;display:block;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,37,69,0.96);
+    backdrop-filter:blur(6px);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;max-width:var(--max);margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    color:var(--white);font-size:18px;font-weight:700;
+  }
+  .brand .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--sky);
+    box-shadow:0 0 0 4px rgba(27,152,224,0.25);
+  }
+  nav.links{display:flex;gap:32px;}
+  nav.links a{
+    color:rgba(255,255,255,0.78);
+    font-size:14px;font-weight:600;
+    letter-spacing:0.02em;
+    transition:color 0.2s;
+  }
+  nav.links a:hover{color:var(--white);}
+  .nav-cta{
+    background:var(--sky);color:var(--navy-deep);
+    padding:9px 18px;border-radius:6px;
+    font-size:14px;font-weight:700;
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(27,152,224,0.35);}
+  .nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:26px;cursor:pointer;}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 12%, rgba(27,152,224,0.35), transparent 45%),
+      radial-gradient(circle at 15% 85%, rgba(232,178,77,0.18), transparent 40%),
+      linear-gradient(180deg,var(--navy-deep) 0%, var(--navy-mid) 100%);
+    color:var(--white);
+    padding:96px 0 110px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--gold);
+    border:1px solid rgba(232,178,77,0.4);
+    padding:6px 12px;border-radius:20px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:48px;line-height:1.12;color:var(--white);
+    margin-bottom:18px;
+  }
+  .hero h1 span{color:var(--sky);}
+  .hero p.lead{
+    font-size:17px;line-height:1.65;color:rgba(255,255,255,0.75);
+    max-width:520px;margin-bottom:32px;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 26px;border-radius:6px;
+    font-size:14px;font-weight:700;letter-spacing:0.01em;
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary{background:var(--sky);color:var(--navy-deep);}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(27,152,224,0.4);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.3);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,0.06);}
+
+  /* org card visual */
+  .org-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:14px;
+    padding:26px;
+    backdrop-filter:blur(4px);
+  }
+  .org-card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+  .org-card .top .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);
+    letter-spacing:0.06em;
+  }
+  .org-card .status{
+    display:flex;align-items:center;gap:6px;font-size:12px;color:#8FE3A0;
+  }
+  .org-card .status .dot{width:7px;height:7px;border-radius:50%;background:#8FE3A0;}
+  .stat-row{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid rgba(255,255,255,0.1);}
+  .stat-row:first-of-type{border-top:none;}
+  .stat-row .label{font-size:13px;color:rgba(255,255,255,0.6);}
+  .stat-row .value{font-size:14px;font-weight:700;color:var(--white);font-family:'IBM Plex Mono',monospace;}
+  .bar{height:6px;border-radius:4px;background:rgba(255,255,255,0.12);overflow:hidden;margin-top:6px;}
+  .bar > div{height:100%;background:linear-gradient(90deg,var(--sky),var(--gold));}
+
+  /* ===== Section shell ===== */
+  section{padding:88px 0;}
+  .section-head{max-width:600px;margin-bottom:52px;}
+  .section-head .eyebrow-light{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--sky);
+    margin-bottom:10px;display:block;
+  }
+  .section-head h2{font-size:32px;color:var(--navy-deep);margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft);font-size:15.5px;line-height:1.6;}
+
+  /* ===== About / Skills ===== */
+  .about{background:var(--paper);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .about-text p{color:var(--ink-soft);font-size:15.5px;line-height:1.75;margin-bottom:16px;}
+  .skill-groups{display:flex;flex-direction:column;gap:18px;}
+  .skill-group{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:var(--radius);padding:18px 20px;
+  }
+  .skill-group h4{font-size:13px;text-transform:uppercase;letter-spacing:0.05em;color:var(--navy-mid);margin-bottom:10px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    background:var(--paper);border:1px solid var(--line);
+    padding:6px 10px;border-radius:5px;color:var(--ink);
+  }
+
+  /* ===== Experience timeline ===== */
+  .timeline{position:relative;padding-left:28px;border-left:2px solid var(--line);}
+  .tl-item{position:relative;padding-bottom:44px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:'';position:absolute;left:-35px;top:4px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--sky);border:3px solid var(--white);box-shadow:0 0 0 2px var(--sky);
+  }
+  .tl-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+  .tl-head h3{font-size:18px;color:var(--navy-deep);}
+  .tl-date{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);}
+  .tl-org{font-size:14px;color:var(--sky);font-weight:600;margin-bottom:10px;}
+  .tl-item p, .tl-item ul{color:var(--ink-soft);font-size:14.5px;line-height:1.65;}
+  .tl-item ul{margin:0;padding-left:18px;}
+  .tl-item li{margin-bottom:5px;}
+
+  /* Certifications */
+  .certs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;}
+  .cert-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 16px;text-align:center;
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .cert-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(11,37,69,0.08);}
+  .cert-badge{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--sky),var(--navy-mid));
+    margin:0 auto 12px;display:flex;align-items:center;justify-content:center;
+    color:var(--white);font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;
+  }
+  .cert-card h4{font-size:13.5px;color:var(--navy-deep);margin-bottom:4px;line-height:1.35;}
+  .cert-card span{font-size:11.5px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+
+  /* ===== Blog ===== */
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .post-card{
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform 0.15s, box-shadow 0.15s;
+  }
+  .post-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,37,69,0.1);}
+  .post-thumb{
+    height:120px;
+    display:flex;align-items:flex-end;padding:14px;
+  }
+  .post-thumb span{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;
+    background:rgba(255,255,255,0.9);color:var(--navy-deep);
+    padding:4px 9px;border-radius:4px;font-weight:700;
+  }
+  .thumb-1{background:linear-gradient(135deg,var(--navy-deep),var(--sky));}
+  .thumb-2{background:linear-gradient(135deg,var(--navy-mid),var(--gold));}
+  .thumb-3{background:linear-gradient(135deg,#173F63,#3FB6E8);}
+  .post-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+  .post-date{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);margin-bottom:8px;}
+  .post-body h3{font-size:17px;color:var(--navy-deep);line-height:1.35;margin-bottom:10px;}
+  .post-body p{font-size:14px;color:var(--ink-soft);line-height:1.6;margin-bottom:16px;flex:1;}
+  .post-link{font-size:13.5px;font-weight:700;color:var(--sky);display:inline-flex;align-items:center;gap:6px;}
+  .post-link::after{content:'→';transition:transform 0.15s;}
+  .post-card:hover .post-link::after{transform:translateX(3px);}
+
+  .blog-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:40px;padding-top:28px;border-top:1px solid var(--line);
+    flex-wrap:wrap;gap:16px;
+  }
+  .blog-footer p{color:var(--ink-soft);font-size:14px;}
+  .newsletter{display:flex;gap:10px;}
+  .newsletter input{
+    padding:11px 14px;border:1px solid var(--line);border-radius:6px;
+    font-size:14px;width:220px;font-family:'Inter',sans-serif;
+  }
+  .newsletter input:focus{outline:2px solid var(--sky);outline-offset:1px;}
+
+  /* ===== Contact / CTA ===== */
+  .cta{
+    background:linear-gradient(135deg,var(--navy-deep),var(--navy-mid));
+    color:var(--white);border-radius:20px;
+    padding:64px 56px;display:flex;justify-content:space-between;align-items:center;gap:40px;
+    flex-wrap:wrap;
+  }
+  .cta h2{font-size:28px;color:var(--white);margin-bottom:12px;}
+  .cta p{color:rgba(255,255,255,0.72);font-size:15px;max-width:420px;}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap;}
+
+  footer{
+    background:var(--navy-deep);color:rgba(255,255,255,0.6);
+    padding:36px 0;font-size:13.5px;
+  }
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-links{display:flex;gap:20px;}
+  .footer-links a{color:rgba(255,255,255,0.6);}
+  .footer-links a:hover{color:var(--white);}
+
+  [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease, transform 0.6s ease;}
+  [data-reveal].in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .certs{grid-template-columns:repeat(2,1fr);}
+    .blog-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .nav-toggle{display:block;}
+    .cta{flex-direction:column;text-align:center;padding:48px 28px;}
+    .cta-actions{justify-content:center;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1;transform:none;transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="dot"></span> Harpreet Singh</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Work with me</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">● Open to opportunities</span>
+      <h1>Making sure every Salesforce release ships <span>tested, stable, and defect-free.</span></h1>
+      <p class="lead">I'm a Salesforce QA Analyst with 4+ years testing Sales &amp; Service Cloud implementations — from test case design through UAT sign-off. I write about the testing patterns and CRM edge cases I run into along the way.</p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary">View my resume</a>
+        <a href="#blog" class="btn btn-ghost">Read the blog</a>
+      </div>
+    </div>
+    <div class="org-card" data-reveal>
+      <div class="top">
+        <span class="tag">TEST CYCLE STATUS</span>
+        <span class="status"><span class="dot"></span> Sign-off ready</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Test cases executed</span>
+        <span class="value">96%</span>
+      </div>
+      <div class="bar"><div style="width:96%"></div></div>
+      <div class="stat-row">
+        <span class="label">Open defects</span>
+        <span class="value">0</span>
+      </div>
+      <div class="bar"><div style="width:3%"></div></div>
+      <div class="stat-row">
+        <span class="label">UAT approval</span>
+        <span class="value">Passed</span>
+      </div>
+      <div class="bar"><div style="width:100%"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <span class="eyebrow-light">About</span>
+      <h2 style="margin-bottom:18px;">Detail-oriented QA, focused on Salesforce</h2>
+      <p>I'm a detail-oriented and self-motivated Salesforce QA professional with 4+ years of experience manually testing Salesforce Classic and Lightning platforms. I design and execute test plans, track down defects, and help teams ship high-quality releases with confidence.</p>
+      <p>My focus is validating CRM functionality, workflows, and integrations across Sales and Service Cloud — with strong collaboration in Agile teams and hands-on experience in tools like Jira and TestRail.</p>
+    </div>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h4>Testing</h4>
+        <div class="chips">
+          <span class="chip">Classic &amp; Lightning Testing</span>
+          <span class="chip">Functional Testing</span>
+          <span class="chip">Regression Testing</span>
+          <span class="chip">Integration Testing</span>
+          <span class="chip">UAT</span>
+          <span class="chip">Mobile App Testing (iOS &amp; Android)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools &amp; Data</h4>
+        <div class="chips">
+          <span class="chip">Jira</span>
+          <span class="chip">TestRail</span>
+          <span class="chip">Bugzilla</span>
+          <span class="chip">Postman (API Testing)</span>
+          <span class="chip">SOQL &amp; Data Validation</span>
+          <span class="chip">Apex &amp; Flows (basics)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Practice</h4>
+        <div class="chips">
+          <span class="chip">Test Case Design</span>
+          <span class="chip">Bug Tracking &amp; Reporting</span>
+          <span class="chip">Agile/Scrum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-light">Resume</span>
+      <h2>Experience</h2>
+      <p>A running record of the releases I've tested and the teams I've supported.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-head"><h3>Salesforce QA Analyst</h3><span class="tl-date">Nov 2023 — Present</span></div>
+        <div class="tl-org">360 Degree Cloud Pvt. Ltd., Noida</div>
+        <ul>
+          <li>Conduct manual testing of Salesforce Lightning applications across Sales and Service Cloud.</li>
+          <li>Develop test cases based on business requirements and user stories.</li>
+          <li>Validate customizations including objects, page layouts, validation rules, workflow rules, and approval processes.</li>
+          <li>Identify and track bugs using Jira; work closely with developers on timely resolution.</li>
+          <li>Participate in Functional Acceptance Testing (FAT) and provide go-live approvals.</li>
+          <li>Involved in agile ceremonies including sprint planning and daily stand-ups.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><h3>Software Test Engineer</h3><span class="tl-date">May 2023 — Oct 2023</span></div>
+        <div class="tl-org">Value Coders, Noida</div>
+        <ul>
+          <li>Executed end-to-end testing of websites and forms.</li>
+          <li>Performed cross-browser, smoke, regression, and integration testing across test cycles.</li>
+          <li>Prepared detailed test documentation, including test plans and defect logs.</li>
+          <li>Participated in mobile responsiveness and compatibility testing.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-head"><h3>Salesforce QA Analyst</h3><span class="tl-date">Jan 2021 — Apr 2023</span></div>
+        <div class="tl-org">Cloud Analogy, Noida</div>
+        <ul>
+          <li>Carried out manual testing of Salesforce applications, focused on Sales and Service Cloud.</li>
+          <li>Designed, executed, and maintained test cases and scenarios based on functional specifications.</li>
+          <li>Verified CRM workflows, page layouts, and automation logic through functional validation.</li>
+          <li>Supported UAT and signed off on production readiness after successful testing.</li>
+          <li>Participated in agile processes including backlog grooming and retrospectives.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:60px;">
+      <span class="eyebrow-light">Education</span>
+      <h2 style="font-size:24px;">Bachelor of Technology, Computer Science</h2>
+      <p>Dronacharya Group of Institutions, Greater Noida — 2017 to 2021</p>
+    </div>
+
+    <div id="certifications">
+      <div class="section-head" style="margin-top:70px;">
+        <span class="eyebrow-light">Credentials</span>
+        <h2>Certifications</h2>
+      </div>
+      <div class="certs">
+        <div class="cert-card">
+          <div class="cert-badge">ADM</div>
+          <h4>Salesforce Certified Administrator</h4>
+          <span>Certified</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">CPD</div>
+          <h4>Copado — Deployment &amp; Release Management</h4>
+          <span>Certified</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">QT1</div>
+          <h4>qTest Specialist — Level 1</h4>
+          <span>Certified</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">ZC</div>
+          <h4>ZOHO CRM — Foundation Level</h4>
+          <span>Certified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="blog">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-light">Writing</span>
+      <h2>From the blog</h2>
+      <p>Notes on Salesforce architecture, automation patterns, and lessons from real implementations. Replace these three with your first real posts.</p>
+    </div>
+    <div class="blog-grid">
+      <article class="post-card">
+        <div class="post-thumb thumb-1"><span>TEST CASES</span></div>
+        <div class="post-body">
+          <span class="post-date">[Month] 2026</span>
+          <h3>Writing test cases that actually catch Salesforce bugs</h3>
+          <p>[Placeholder excerpt] The difference between a test case that ticks a box and one that would've caught last quarter's production defect.</p>
+          <a href="#" class="post-link">Read post</a>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-thumb thumb-2"><span>UAT</span></div>
+        <div class="post-body">
+          <span class="post-date">[Month] 2026</span>
+          <h3>Getting UAT sign-off without the last-minute scramble</h3>
+          <p>[Placeholder excerpt] How to structure a UAT cycle so go-live day isn't a fire drill for QA or the business team.</p>
+          <a href="#" class="post-link">Read post</a>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-thumb thumb-3"><span>CAREER</span></div>
+        <div class="post-body">
+          <span class="post-date">[Month] 2026</span>
+          <h3>How I passed the Salesforce Administrator exam</h3>
+          <p>[Placeholder excerpt] The study plan, practice org setup, and the topics that tripped me up on the first attempt.</p>
+          <a href="#" class="post-link">Read post</a>
+        </div>
+      </article>
+    </div>
+    <div class="blog-footer">
+      <p>New posts roughly every two weeks — Salesforce tips, no fluff.</p>
+      <form class="newsletter" onsubmit="event.preventDefault(); this.querySelector('input').value='Thanks — you\'re on the list';">
+        <input type="email" placeholder="you@email.com" required>
+        <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2>Let's talk about your next release</h2>
+        <p>Open to Salesforce QA roles, contract testing engagements, and teams that need release cycles tested properly before go-live.</p>
+        <p style="margin-top:14px;color:rgba(255,255,255,0.55);font-size:13.5px;">Noida, Uttar Pradesh, India</p>
+      </div>
+      <div class="cta-actions">
+        <a href="mailto:harpreet28777@gmail.com" class="btn btn-primary">Email me</a>
+        <a href="https://www.linkedin.com/in/harpreet-singh-2b2447182" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#" class="btn btn-ghost">Download resume (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Harpreet Singh. Built with a little AI help.</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/harpreet-singh-2b2447182" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:harpreet28777@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // simple mobile nav toggle (adds button dynamically for small screens)
+  const navEl = document.querySelector('.nav');
+  const toggle = document.createElement('button');
+  toggle.className = 'nav-toggle';
+  toggle.setAttribute('aria-label','Toggle menu');
+  toggle.textContent = '☰';
+  navEl.insertBefore(toggle, navEl.querySelector('.nav-cta'));
+  const linksEl = document.querySelector('.links');
+  toggle.addEventListener('click', () => {
+    const open = linksEl.style.display === 'flex';
+    linksEl.style.display = open ? 'none' : 'flex';
+    linksEl.style.flexDirection = 'column';
+    linksEl.style.position = 'absolute';
+    linksEl.style.top = '62px';
+    linksEl.style.left = '0';
+    linksEl.style.right = '0';
+    linksEl.style.background = 'var(--navy-deep)';
+    linksEl.style.padding = '20px 32px';
+    linksEl.style.gap = '16px';
+  });
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:0.2});
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
